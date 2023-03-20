@@ -39,10 +39,10 @@ class DBStorage:
         print('db storage')
         new_dict = {}
         # print(cls)
-        if cls != None:
-            all_obj = self.__session.query(cls).fetchall()
+        if cls is not None:
+            all_obj = self.__session.query(cls).all()
         else:
-            all_obj = self.__session.query().fetchall()
+            all_obj = self.__session.query().all()
         for obj in all_obj:
             index = obj.to_dict()['__class__'] + '.' + obj.id
             new_dict[index] = obj
