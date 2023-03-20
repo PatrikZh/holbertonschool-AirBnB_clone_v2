@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-import sqlalchemy
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 from models.base_model import BaseModel, Base
@@ -10,6 +9,11 @@ import os
 class DBStorage:
     __engine = None
     __session = None
+
+    tables = {
+        'State': 'states',
+        'City': 'cities'
+    }
 
     def __init__(self):
         user = os.getenv('HBNB_MYSQL_USER')
@@ -39,3 +43,12 @@ class DBStorage:
             index = obj.to_dict()['__class__'] + '.' + obj.id
             new_dict[index] = obj
         return new_dict
+
+    def new(self, obj):
+        table_name = DBStorage.tables[obj.__class__.__name__]
+        new_row = table_name(**obj.to_dict())
+        self.__session.add(new_row)
+        self.save()
+
+    def save(self):
+        self.__session.commit()
