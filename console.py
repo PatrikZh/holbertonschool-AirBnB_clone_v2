@@ -2,6 +2,8 @@
 """ Console Module """
 import cmd
 import sys
+import os
+from models.engine.db_storage import DBStorage
 from models.__init__ import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -333,4 +335,6 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == "__main__":
+    print(os.environ)
+    engine = DBStorage()
     HBNBCommand().cmdloop()
