@@ -50,6 +50,9 @@ class DBStorage:
 
     def new(self, obj):
         table_name = DBStorage.tables[obj.__class__.__name__]
+        print(obj)
+        print(obj.to_dict())
+        return
         new_row = table_name(**obj.to_dict())
         self.__session.add(new_row)
         self.save()
