@@ -39,7 +39,7 @@ class DBStorage:
         print('db storage')
         new_dict = {}
         # print(cls)
-        all_obj = self.__session.all()
+        all_obj = self.__session.query(cls.__tablename__).all()
         for obj in all_obj:
             # index = obj.to_dict()['__class__'] + '.' + obj.id
             # new_dict[index] = obj
