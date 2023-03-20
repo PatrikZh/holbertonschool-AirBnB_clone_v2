@@ -30,7 +30,7 @@ class DBStorage:
 
     def all(self, cls=None):
         new_dict = {}
-        print(cls)
+        # print(cls)
         if cls != None:
             all_obj = self.__session.query(cls).fetchall()
         else:
