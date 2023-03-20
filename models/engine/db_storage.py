@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 import sqlalchemy
-from sqlalchemy import (create_engine)
+from sqlalchemy import create_engine, MetaData
+from sqlalchemy.orm import sessionmaker
 from models.base_model import BaseModel, Base
 import os
 
@@ -15,10 +16,6 @@ class DBStorage:
         pwd = os.getenv('HBNB_MYSQL_PWD')
         host = os.getenv('HBNB_MYSQL_HOST')
         db = os.getenv('HBNB_MYSQL_DB')
-        print()
-        print()
-        print()
-        print(user, pwd, host, db)
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
             user, pwd, host, db), pool_pre_ping=True)
 
