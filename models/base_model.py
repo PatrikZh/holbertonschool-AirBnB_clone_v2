@@ -42,7 +42,7 @@ class BaseModel:
     def to_dict(self):
         """Convert instance into dict format"""
         dictionary = {}
-        if self.__dict__['_sa_instance_method']:
+        if '_sa_instance_method' in self.__dict__.keys():
             del self.__dict__['_sa_instance_method']
         dictionary.update(self.__dict__)
         dictionary.update({'__class__':
@@ -52,7 +52,7 @@ class BaseModel:
         return dictionary
 
     def delete(self):
-        for key, value in storage.all():
+        for key, value in models.storage.all():
             if value == self:
                 del models.storage.all()[key]
                 break
