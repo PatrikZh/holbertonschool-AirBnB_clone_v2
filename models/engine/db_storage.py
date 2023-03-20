@@ -12,9 +12,11 @@ class DBStorage:
 
     def __init__(self):
         user = os.getenv('HBNB_MYSQL_USER', default=None)
-        print(user)
+        pwd = os.getenv('HBNB_MYSQL_PWD', default=None)
+        host = os.getenv('HBNB_MYSQL_HOST', default=None)
+        db = os.getenv('HBNB_MYSQL_DB', default=None)
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
-            HBNB_MYSQL_USER, HBNB_MYSQL_PWD, HBNB_MYSQL_HOST, HBNB_MYSQL_DB), pool_pre_ping=True)
+            user, pwd, host, db), pool_pre_ping=True)
 
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine)
