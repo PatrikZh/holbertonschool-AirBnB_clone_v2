@@ -39,7 +39,7 @@ class DBStorage:
         print('db storage')
         new_dict = {}
         # print(cls)
-        if cls != None:
+        if cls is not None:
             all_obj = self.__session.query(cls).all()
         else:
             all_obj = self.__session.query().all()
