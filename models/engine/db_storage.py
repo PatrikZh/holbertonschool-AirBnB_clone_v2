@@ -38,7 +38,6 @@ class DBStorage:
     def all(self, cls=None):
         print('db storage')
         new_dict = {}
-        table = cls.__tablename__
         all_obj = self.__session.query(cls).all()
         for obj in all_obj:
             index = obj.to_dict()['__class__'] + '.' + obj.id
