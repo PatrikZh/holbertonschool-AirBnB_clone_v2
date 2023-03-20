@@ -212,7 +212,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, args):
         """ Shows all objects, or all objects of a class"""
         if len(args) != 0:
-            if args not in ls:
+            if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return False
             for key, value in storage.all().items():
