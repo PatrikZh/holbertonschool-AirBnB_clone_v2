@@ -55,6 +55,7 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
+        """Method deletes given argument obj"""
         if obj != None:
             storage = self.all()
             for key, value in storage.items():
