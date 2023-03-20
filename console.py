@@ -216,7 +216,7 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return False
-            for key, value in storage.all(State).items():
+            for key, value in storage.all(args).items():
                 if value.__class__.__name__ == args:
                     print(value)
         else:
