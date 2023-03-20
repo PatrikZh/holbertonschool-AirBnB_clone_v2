@@ -24,7 +24,7 @@ class DBStorage:
         self.__session = Session()
         metadata = MetaData(bind=self.__engine)
 
-        if HBNB_ENV == "test":
+        if os.getenv('HBNB_ENV') == "test":
             metadata.reflect(bind=self.__engine)
             metadata.drop_all(bind=self.__engine)
 
