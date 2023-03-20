@@ -119,8 +119,14 @@ class HBNBCommand(cmd.Cmd):
         kwargs = {}
         for i in range(1, len(args)):
             name = args[i].split("=")
-            text = name[1].split("\"")
-            value = text[1].replace('_', " ")
+            if "\"" in name[1]:
+                text = name[1].split("\"")
+                value = text[1].replace('_', " ")
+            else:
+                if "." in name[1]:
+                    value = float(name[1])
+                else:
+                    value = int(name[1])
             kwargs[name[0]] = value
         if not args[0]:
             print("** class name missing **")
