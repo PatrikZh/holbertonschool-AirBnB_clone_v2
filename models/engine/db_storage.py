@@ -15,7 +15,7 @@ class DBStorage:
 
     tables = {
         'State': State,
-        'City': 'cities'
+        'City': City
     }
 
     def __init__(self):
@@ -47,8 +47,6 @@ class DBStorage:
 
     def new(self, obj):
         # table_name = DBStorage.tables[obj.__class__.__name__]
-        print(obj.to_dict())
-        print(obj.__class__.__name__)
         new_row = DBStorage.tables[obj.__class__.__name__](**obj.to_dict())
         self.__session.add(new_row)
         self.save()
