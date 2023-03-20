@@ -55,6 +55,7 @@ class DBStorage:
         self.save()
 
     def save(self):
+
         self.__session.commit()
 
     def reload(self):
