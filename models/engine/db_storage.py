@@ -2,7 +2,10 @@
 
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import scoped_session
 from models.base_model import BaseModel, Base
+from models.city import City
+from models.state import State
 import os
 
 
@@ -23,7 +26,7 @@ class DBStorage:
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
             user, pwd, host, db), pool_pre_ping=True)
 
-        Base.metadata.create_all(self.__engine)
+        # Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine)
         self.__session = Session()
         metadata = MetaData(bind=self.__engine)
@@ -52,3 +55,8 @@ class DBStorage:
 
     def save(self):
         self.__session.commit()
+
+    def reload(self):
+        Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        self.__session = scoped_session(Session)
+        Base.metadata.create_all(self.__engine)
