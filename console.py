@@ -211,7 +211,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, args):
         """ Shows all objects, or all objects of a class"""
-        print('ktu')
         if len(args) != 0:
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
@@ -330,5 +329,5 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == "__main__":
-    engine = DBStorage()
+    # engine = DBStorage()
     HBNBCommand().cmdloop()

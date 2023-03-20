@@ -36,6 +36,7 @@ class DBStorage:
             metadata.drop_all(bind=self.__engine)
 
     def all(self, cls=None):
+        print('db storage')
         new_dict = {}
         # print(cls)
         if cls != None:
