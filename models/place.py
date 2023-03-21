@@ -2,7 +2,7 @@
 """ Place Module for HBNB project """
 from models.base_model import BaseModel, Base
 from models.review import Review
-from models import storage
+import models
 from sqlalchemy import Column, String, Integer, Float
 from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey
@@ -34,7 +34,7 @@ class Place(BaseModel, Base):
         @property
         def reviews(self):
             new_ls = []
-            for rev in storage.all(Review):
+            for rev in models.storage.all(Review):
                 if self.id == Review.place_id:
                     new_ls.append(rev)
             return new_ls
