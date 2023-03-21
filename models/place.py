@@ -2,6 +2,7 @@
 """ Place Module for HBNB project """
 from models.base_model import BaseModel, Base
 from models.review import Review
+from models.amenity import Amenity
 import models
 from sqlalchemy import Column, String, Integer, Float
 from sqlalchemy.orm import relationship
@@ -40,13 +41,37 @@ class Place(BaseModel, Base):
 
     amenities = relationship(
         "Amenity", secondary='place_amenity', back_populates='place_amenities', viewonly=False)
+
     amenity_ids = []
 
     if os.getenv('HBNB_TYPE_STORAGE') != 'db':
+
         @property
         def reviews(self):
-            new_ls = []
-            for rev in models.storage.all(Review):
-                if self.id == Review.place_id:
-                    new_ls.append(rev)
-            return new_ls
+            """get a list of all related review instances
+            with review.places_id = to the current place.id
+            """
+            reviews_list = []
+
+            for review in list(models.storage.all(Review).values()):
+                if review.place_id == self.id:
+                    reviews_list.append(review)
+            return reviews_list
+
+        @property
+        def amenities(self):
+            """get a list of all related amenity instances
+            with amenity.id = to the current self amenity ids
+            """
+            amenities_list = []
+
+            for amenity in list(models.storage.all(Amenity).values()):
+                if amenity.id in self.amenity_ids:
+                    amenities_list.append(amenity)
+            return amenities_list
+
+        @amenities.setter
+        def amenities(self, obj):
+            """Function that handles append method for adding an amenity"""
+            if type(obj) == Amenity:
+                self.amenities_ids.append(obj.id)
