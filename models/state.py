@@ -16,10 +16,10 @@ class State(BaseModel, Base):
     cities = relationship("City", back_populates="state",
                           cascade="all, delete-orphan")
 
-    @property
-    def cities(self):
-        new_ls = []
-        for city in models.storage.all(City):
-            if self.id == city.state_id:
-                new_ls.append(city)
-        return new_ls
+    # @property
+    # def cities(self):
+    #     new_ls = []
+    #     for city in models.storage.all(City):
+    #         if self.id == city.state_id:
+    #             new_ls.append(city)
+    #     return new_ls
