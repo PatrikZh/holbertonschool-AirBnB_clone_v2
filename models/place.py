@@ -40,7 +40,7 @@ class Place(BaseModel, Base):
     )
 
     amenities = relationship(
-        "Amenity", back_populates='places', secondary=place_amenity, viewonly=False)
+        "Amenity", secondary=place_amenity, back_populates='places', viewonly=False)
 
     if os.getenv('HBNB_TYPE_STORAGE') != 'db':
         @property
