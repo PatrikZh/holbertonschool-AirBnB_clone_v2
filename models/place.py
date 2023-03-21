@@ -5,7 +5,7 @@ from models.review import Review
 import models
 from sqlalchemy import Column, String, Integer, Float
 from sqlalchemy.orm import relationship
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, Table
 import os
 
 
@@ -29,6 +29,18 @@ class Place(BaseModel, Base):
     cities = relationship("City", back_populates='places')
     reviews = relationship(
         "Review", back_populates='places', cascade='all, delete-orphan')
+
+    place_amenity = Table(
+        "place_amenity",
+        Base.metadata,
+        Column(String(60), "place_id", ForeignKey("places.id", ondelete="CASCADE"),
+               primary_key=True, nullable=False),
+        Column(String(60), "amenity_id", ForeignKey("amenities.id", ondelete="CASCADE"),
+               primary_key=True, nullable=False)
+    )
+
+    amenities = relationship(
+        "Amenity", back_populates='places', secondary=place_amenity, viewonly=False)
 
     if os.getenv('HBNB_TYPE_STORAGE') != 'db':
         @property
