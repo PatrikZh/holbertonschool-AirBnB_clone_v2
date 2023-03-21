@@ -33,9 +33,9 @@ class Place(BaseModel, Base):
     place_amenity = Table(
         "place_amenity",
         Base.metadata,
-        Column(String(60), "place_id", ForeignKey("places.id", ondelete="CASCADE"),
+        Column("place_id", String(60), ForeignKey("places.id", ondelete="CASCADE"),
                primary_key=True, nullable=False),
-        Column(String(60), "amenity_id", ForeignKey("amenities.id", ondelete="CASCADE"),
+        Column("amenity_id", String(60), ForeignKey("amenities.id", ondelete="CASCADE"),
                primary_key=True, nullable=False)
     )
 
