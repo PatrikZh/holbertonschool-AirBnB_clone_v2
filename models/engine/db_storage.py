@@ -26,7 +26,6 @@ class DBStorage:
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
             user, pwd, host, db), pool_pre_ping=True)
 
-        # Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine)
         self.__session = Session()
         metadata = MetaData(bind=self.__engine)
@@ -46,14 +45,20 @@ class DBStorage:
         return new_dict
 
     def new(self, obj):
-        # table_name = DBStorage.tables[obj.__class__.__name__]
         new_row = DBStorage.tables[obj.__class__.__name__](**obj.to_dict())
         self.__session.add(new_row)
         self.save()
 
     def save(self):
-
         self.__session.commit()
+
+    def delete(self, obj=None):
+        if obj is not None:
+            name = DBStorage.tables[obj.__class__.__name__]
+            print(obj.id)
+            x = self.__session.query(name).filter(name.id == obj.id).first()
+            self.__session.delete(x)
+            self.save()
 
     def reload(self):
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
