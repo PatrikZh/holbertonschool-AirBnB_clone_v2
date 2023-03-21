@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey, Table
 import os
 
-place_amenity = Table(
+association_table = Table(
     "place_amenity",
     Base.metadata,
     Column("place_id", String(60), ForeignKey("places.id"),
