@@ -53,7 +53,7 @@ class FileStorage:
 
     def delete(self, obj=None):
         """Method deletes given argument obj"""
-        if obj != None:
+        if obj is not None:
             storage = self.all()
             for key, value in storage.items():
                 if value == obj:
