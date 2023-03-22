@@ -52,9 +52,9 @@ class DBStorage:
         return new_dict
 
     def new(self, obj):
-        new_row = DBStorage.tables[obj.__class__.__name__](**obj.to_dict())
-        self.__session.add(new_row)
-        self.save()
+        # new_row = DBStorage.tables[obj.__class__.__name__](**obj.to_dict())
+        self.__session.add(obj)
+        # self.save()
 
     def save(self):
         self.__session.commit()
