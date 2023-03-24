@@ -12,6 +12,7 @@ class TestConsoleProgram(unittest.TestCase):
         program.do_create("Person name=John age=25")
         self.assertEqual(program.storage.all()["Person.1"].to_dict(),
                          {"id": "Person.1", "name": "John", "age": 25})
+
     def test_all(self):
         ''' Creates another person and checks if info is correct'''
         program = HBNBCommand()
