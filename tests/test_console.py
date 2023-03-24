@@ -6,7 +6,7 @@ import unittest
 from console import HBNBCommand
 
 class TestConsoleProgram(unittest.TestCase):
-    
+    ''' Testing do_create() and do_all()'''
     def test_create(self):
         program = HBNBCommand()
         program.do_create("Person name=John age=25")
