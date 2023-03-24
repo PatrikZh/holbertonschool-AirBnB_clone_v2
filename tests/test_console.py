@@ -1,25 +1,24 @@
 #!/usr/bin/python3
-""" Testing console"""
+"""Test console module"""
+
 import unittest
+import console
 from console import HBNBCommand
 
 
-class TestConsoleProgram(unittest.TestCase):
-    ''' Testing do_create() and do_all()'''
-    pass
-    """ def test_create(self):
-        ''' Creates person object and checks if matches with dict format'''
-        program = HBNBCommand()
-        program.do_create("Person name=John age:=25")
-        self.assertEqual(program.storage.all()["Person.1"].to_dict(),
-                         {"id": "Person.1", "name": "John", "age": 25})
+class TestConsole(unittest.TestCase):
+    """Class to test console"""
 
-     '''def test_all(self):
-        ''' Creates another person and checks if info is correct'''
-        program = HBNBCommand()
-        program.do_create("Person name=John age:=25")
-        program.do_create("Person name=Sarah age:=30")
-        all_people = program.do_all("Person")
-        self.assertEqual(len(all_people), 2)
-        self.assertIn(("John", 25), all_people[0])
-        self.assertIn(("Sarah", 30), all_people[1])"""
+    def test_documentation(self):
+        """Testing module docstring"""
+        self.assertTrue(console.__doc__)
+        self.assertTrue(console.HBNBCommand.__doc__)
+
+    def test_methods_doc(self):
+        """Testing all docstring of all methods"""
+        for all_methods in dir(HBNBCommand):
+            self.assertTrue(all_methods.__doc__)
+
+
+if __name__ == '__main__':
+    unittest.main()
