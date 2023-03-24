@@ -49,7 +49,6 @@ class FileStorage:
                     for key, value in obj.items():
                         value = eval(value['__class__'])(**value)
                         FileStorage.new(self, value)
-        return True
 
     def delete(self, obj=None):
         """Method deletes given argument obj"""
