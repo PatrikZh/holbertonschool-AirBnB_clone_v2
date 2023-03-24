@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 """ Testing console"""
-import os
-import uuid
 import unittest
 from console import HBNBCommand
 
 class TestConsoleProgram(unittest.TestCase):
     ''' Testing do_create() and do_all()'''
     def test_create(self):
+        ''' Creates person object and checks if matches with dict format'''
         program = HBNBCommand()
         program.do_create("Person name=John age=25")
         self.assertEqual(program.storage.all()["Person.1"].to_dict(),
                          {"id": "Person.1", "name": "John", "age": 25})
         
     def test_all(self):
+        ''' Creates another person and checks info if in correct format'''
         program = HBNBCommand()
         program.do_create("Person name=John age=25")
         program.do_create("Person name=Sarah age=30")
