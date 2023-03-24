@@ -86,8 +86,9 @@ class TestDBStorage(unittest.TestCase):
     def test_new(self):
         st = State(name="Washington")
         self.storage.new(st)
-        store = list(self.storage._DBStorage__session.new)
-        self.assertIn(st, store)
+        x = self.storage._DBStorage__session.query(
+            State).filter(name.id == st.id).first()
+        self.assertEqual(st, x)
 
 
 if __name__ == "__main__":
