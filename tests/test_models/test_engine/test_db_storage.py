@@ -87,7 +87,7 @@ class TestDBStorage(unittest.TestCase):
         st = State(name="Washington")
         self.storage.new(st)
         x = self.storage._DBStorage__session.query(
-            State).filter(name.id == st.id).first()
+            State).filter(State.id == st.id).first()
         self.assertEqual(st, x)
 
 
