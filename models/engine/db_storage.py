@@ -44,11 +44,18 @@ class DBStorage:
 
     def all(self, cls=None):
         new_dict = {}
-        name = DBStorage.tables[cls]
-        all_obj = self.__session.query(name).all()
-        for obj in all_obj:
-            index = obj.to_dict()['__class__'] + '.' + obj.id
-            new_dict[index] = obj
+        if cls is not None:
+            name = DBStorage.tables[cls]
+            all_obj = self.__session.query(name).all()
+            for obj in all_obj:
+                index = obj.to_dict()['__class__'] + '.' + obj.id
+                new_dict[index] = obj
+        else:
+            for elem in DBStorage.tables:
+                all_obj = self.__session.query(elem).all()
+                for obj in all_obj:
+                    index = obj.to_dict()['__class__'] + '.' + obj.id
+                    new_dict[index] = obj
         return new_dict
 
     def new(self, obj):
@@ -62,7 +69,6 @@ class DBStorage:
     def delete(self, obj=None):
         if obj is not None:
             name = DBStorage.tables[obj.__class__.__name__]
-            print(obj.id)
             x = self.__session.query(name).filter(name.id == obj.id).first()
             self.__session.delete(x)
             self.save()
