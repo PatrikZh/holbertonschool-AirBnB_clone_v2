@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""Returns all data"""
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session
@@ -14,6 +14,7 @@ import os
 
 
 class DBStorage:
+    """Returns all data"""
     __engine = None
     __session = None
 
@@ -43,6 +44,7 @@ class DBStorage:
             metadata.drop_all(bind=self.__engine)
 
     def all(self, cls=None):
+        """Returns all data"""
         new_dict = {}
         if cls is not None:
             name = DBStorage.tables[cls]
@@ -59,14 +61,15 @@ class DBStorage:
         return new_dict
 
     def new(self, obj):
-        # new_row = DBStorage.tables[obj.__class__.__name__](**obj.to_dict())
+        """Returns all data"""
         self.__session.add(obj)
-        # self.save()
 
     def save(self):
+        """Returns all data"""
         self.__session.commit()
 
     def delete(self, obj=None):
+        """Returns all data"""
         if obj is not None:
             name = DBStorage.tables[obj.__class__.__name__]
             x = self.__session.query(name).filter(name.id == obj.id).first()
@@ -74,6 +77,7 @@ class DBStorage:
             self.save()
 
     def reload(self):
+        """Returns all data"""
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(Session)
         Base.metadata.create_all(self.__engine)
