@@ -13,7 +13,7 @@ class TestConsoleProgram(unittest.TestCase):
                          {"id": "Person.1", "name": "John", "age": 25})
         
     def test_all(self):
-        ''' Creates another person and checks info if correct'''
+        ''' Creates another person and checks if info is correct'''
         program = HBNBCommand()
         program.do_create("Person name=John age=25")
         program.do_create("Person name=Sarah age=30")
