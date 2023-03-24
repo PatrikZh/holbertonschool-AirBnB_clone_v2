@@ -15,3 +15,6 @@ class Test_DBStorage(unittest.TestCase):
         """ Module for testing DB storage"""
         for method in dir(DBStorage):
             self.assertTrue(method.__doc__)
+
+if __name__ == "__main__":
+    unittest.main()
