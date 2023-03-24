@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Returns all data"""
-import MySQLdb
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session

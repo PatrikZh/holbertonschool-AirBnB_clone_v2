@@ -1,6 +1,7 @@
 """Defines unnittests for models/engine/db_storage.py."""
 import models
 import unittest
+import MySQLdb
 from os import getenv
 from models.base_model import Base
 from models.user import User
