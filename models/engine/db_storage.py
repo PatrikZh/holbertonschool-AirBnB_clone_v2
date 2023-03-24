@@ -53,7 +53,7 @@ class DBStorage:
                 index = obj.to_dict()['__class__'] + '.' + obj.id
                 new_dict[index] = obj
         else:
-            for elem in DBStorage.tables:
+            for elem in DBStorage.tables.values():
                 all_obj = self.__session.query(elem).all()
                 for obj in all_obj:
                     index = obj.to_dict()['__class__'] + '.' + obj.id
