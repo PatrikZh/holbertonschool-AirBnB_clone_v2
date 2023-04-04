@@ -1,4 +1,4 @@
-from models import storage, storage.all
+from models import storage
 from flask import Flask, render_template
 from models.state import State
 
