@@ -21,11 +21,11 @@ def c(text):
     ''' Displaying modified string'''
     value = "C"
     modified_text = ""
-    for i in range(len(text)):
-        if text[i] == "_":
-            modified_text += " {} ".format(value)
+    for i in text:
+        if i == "_":
+            modified_text += "{} ".format(value)
         else:
-            modified_text += text[i]
+            modified_text += i
     return modified_text
 
 if __name__ == '__main__':
