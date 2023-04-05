@@ -25,7 +25,7 @@ def c_text(text):
         if text[i] == "_":
             modified_text += value + " "
         else:
-            modified_text += text[i]
+            modified_text += value + text[i]
     return modified_text
 
 if __name__ == '__main__':
