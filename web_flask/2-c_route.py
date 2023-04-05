@@ -19,13 +19,12 @@ def hbnb():
 @app.route('/c/<text>', strict_slashes=False)
 def c_text(text):
     ''' Displaying modified string'''
-    value = "C"
     modified_text = ""
     for i in range(len(text)):
         if text[i] == "_":
-            modified_text += value + " "
+            modified_text += "C" + " "
         else:
-            modified_text += value + text[i]
+            modified_text += text[i]
     return modified_text
 
 if __name__ == '__main__':
