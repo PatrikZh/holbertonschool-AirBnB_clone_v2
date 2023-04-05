@@ -23,7 +23,7 @@ def c(text):
     modified_text = ""
     for i in text:
         if i == "_":
-            modified_text += "{} ".format(value)
+            modified_text += value + i
         else:
             modified_text += i
     return modified_text
