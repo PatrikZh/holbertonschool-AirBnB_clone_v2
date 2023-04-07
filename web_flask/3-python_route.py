@@ -28,6 +28,7 @@ def c(text):
             modified_text += text[i]
     return value + " " + modified_text
 
+
 @app.route("/python", defaults={'text': 'is_cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def modify_text(text):
