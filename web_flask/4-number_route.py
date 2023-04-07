@@ -46,13 +46,9 @@ def modify_text(text):
 @app.route('/number/<int:n>', strict_slashes=False)
 def number_int(n):
     ''' Adding only if number'''
-    modified_int = ""
-    if isinstance(n, int):
-        modified_int = str(n)
-        print("n is a number")
-    else:
-        modified_int = ""
-    return modified_int 
+    modified_int = str(n)
+    message = "{} is a number".format(modified_int)
+    return modified_int
 
 if __name__ == '__main__':
     ''' Checking if main file'''
