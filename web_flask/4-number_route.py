@@ -43,7 +43,7 @@ def modify_text(text):
     return value + " " + modified_text
 
 
-@app.route('/number/<n:n>', strict_slashes=False)
+@app.route('/number/<int:n>', strict_slashes=False)
 def number_int(n):
     ''' Adding only if number'''
     modified_int = ""
