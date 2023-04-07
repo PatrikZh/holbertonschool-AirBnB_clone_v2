@@ -38,7 +38,7 @@ def modify_text(text):
         if text[i] == "_":
             modified_text += " "
         else:
-            modified_text += text[i]
+            value += modified_text
     return value + " " + modified_text
 
 if __name__ == '__main__':
