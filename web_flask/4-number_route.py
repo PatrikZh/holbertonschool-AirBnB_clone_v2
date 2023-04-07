@@ -48,7 +48,7 @@ def number_int(n):
     ''' Adding only if number'''
     modified_int = str(n)
     message = "{} is a number".format(modified_int)
-    return modified_int
+    return message
 
 if __name__ == '__main__':
     ''' Checking if main file'''
