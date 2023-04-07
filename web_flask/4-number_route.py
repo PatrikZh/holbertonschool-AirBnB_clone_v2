@@ -48,7 +48,7 @@ def number_int(n):
     ''' Adding only if number'''
     modified_int = ""
     if isinstance(n, int):
-        modified_int += n
+        modified_int = str(n)
         print("n is a number")
     else:
         modified_int = ""
