@@ -26,7 +26,7 @@ def c(text):
             modified_text += " " + value
         else:
             modified_text += text[i]
-    return modified_text
+    return value + " " + modified_text
 
 if __name__ == '__main__':
     ''' Checking if main file'''
