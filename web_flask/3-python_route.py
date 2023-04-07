@@ -38,8 +38,8 @@ def modify_text(text):
         if text[i] == "_":
             modified_text += " "
         else:
-            pass
-    return value + " " + modified_text
+            modified_text += value + text[i]
+    return modified_text
 
 if __name__ == '__main__':
     ''' Checking if main file'''
