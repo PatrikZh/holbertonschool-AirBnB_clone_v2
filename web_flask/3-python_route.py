@@ -29,7 +29,7 @@ def c(text):
     return value + " " + modified_text
 
 
-@app.route('/python/<text>', defaults={'text': 'is_cool'}, strict_slashes=False)
+@app.route('/python/<text>', defaults={'text': 'is cool'}, strict_slashes=False)
 def modify_text(text):
     ''' Displaying modified string'''
     value = "Python"
@@ -39,7 +39,7 @@ def modify_text(text):
             modified_text += " "
         else:
             modified_text += text[i]
-    return modified_text
+    return value + " " + modified_text
 
 if __name__ == '__main__':
     ''' Checking if main file'''
