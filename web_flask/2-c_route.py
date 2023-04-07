@@ -20,12 +20,13 @@ def hbnb():
 def c(text):
     ''' Displaying modified string'''
     value = "C"
+    modified_text = ""
     for i in range(len(text)):
         if text[i] == "_":
-            text[i] = value + " "
+            modified_text = " " + value
         else:
-            pass
-    return text[i]
+            modified_text = text[i]
+    return modified_text
 
 if __name__ == '__main__':
     ''' Checking if main file'''
