@@ -23,7 +23,7 @@ def c(text):
     modified_text = ""
     for i in range(len(text)):
         if text[i] == "_":
-            modified_text += " " + value
+            modified_text += " "
         else:
             modified_text += text[i]
     return value + " " + modified_text
