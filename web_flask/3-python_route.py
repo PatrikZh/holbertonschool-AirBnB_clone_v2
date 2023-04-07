@@ -28,8 +28,9 @@ def c(text):
             modified_text += text[i]
     return value + " " + modified_text
 
+
 @app.route('/python/<text>', strict_slashes=False)
-def python(text):
+def python(text="is cool"):
     ''' Displaying modified string'''
     value = "Python"
     modified_text = ""
