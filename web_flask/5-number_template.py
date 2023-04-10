@@ -51,7 +51,7 @@ def number_int(n):
     return message
 
 
-@app.route('/number_template/<n>', strict_slashes=False)
+@app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
     ''' HTML comes in only if n is an integer'''
     return render_template("5-number.html", n=n)
