@@ -10,14 +10,14 @@ from models.engine.db_storage import DBStorage
 app = Flask(__name__)
 
 
-@app.route('/cities_by_states', strict_slashes=False)
+@app.route("/cities_by_states", strict_slashes=False)
 def state_city_list():
     """ Route that renders cities by states"""
     cities_by_state = {}
     states = storage.all("State").values()
     for state in states:
         cities_by_state[state.name] = state.cities
-    return render_template("8-cities_by_states.html",
+    return render_template('8-cities_by_states.html',
                            states=states, cities=cities_by_state)
 
 
