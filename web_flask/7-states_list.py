@@ -17,7 +17,6 @@ def teardown_appcontext(self):
 def states_list():
     """Route handler for /states_list."""
     states = storage.all("State").values()
-    sorted_states = sorted(states, key=lambda x: x.name)
     return render_template('7-states_list.html', states=states)
 
 
